@@ -1,0 +1,30 @@
+{application, nova_admin,
+ [{description, "nova_admin managed by Nova"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { nova_admin_app, []}},
+  {included_applications, [
+                           nova
+                          ]},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[
+        {dev_mode, true},
+        {web_port, 8081},
+        {nova_applications, [
+                               #{
+                                 name => nova_admin,
+                                 routes_file => "priv/nova_admin.routes.erl"
+                                },
+                                #{
+                                 name => nova_chat,
+                                 routes_file => "priv/nova_chat.routes.erl"
+                                 }
+                                  ]}]},
+  {modules, []},
+  {maintainers, []},
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.

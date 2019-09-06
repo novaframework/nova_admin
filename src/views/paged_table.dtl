@@ -1,0 +1,25 @@
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <thead>
+    <tr>
+      {% for column in columns %}
+      <th>{{column}}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      {% for column in columns %}
+      <th>{{column}}</th>
+      {% endfor %}
+    </tr>
+  </tfoot>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      {% for column in row %}
+      <td>{{column}}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
