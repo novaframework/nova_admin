@@ -1,35 +1,36 @@
 -module(nova_admin_handler).
 -export([
-         handle/2
+         handle/4
         ]).
 
 -include_lib("nova_admin/include/nova_admin.hrl").
+-include_lib("nova/include/nova.hrl").
 
-handle({ok, Variables}, Req) ->
-    {ok, MainApp} = nova_router:get_main_app(),
+handle({ok, Variables}, ModFun, Req, State) ->
+    MainApp = nova_router:get_main_app(),
     Apps = application:get_env(MainApp, nova_applications, []),
     AppsWithPages =
         lists:map(fun(#{name := App, routes_file := RoutesFile}) ->
                           #{name => App, pages => get_subpages(RoutesFile)}
                   end, Apps),
-    {ok, Variables ++ [{menu_apps, AppsWithPages}], #{view => "blank"}};
-
-handle(Formats, Req) when is_list(Formats) ->
+    ?DEBUG("Variables: ~p, ~p", [Variables, AppsWithPages]),
+    nova_basic_handler:handle_ok({ok, Variables ++ [{menu_apps, AppsWithPages}]}, ModFun, Req, State);
+handle(Formats, ModFun, Req, State) when is_list(Formats) ->
     ConcatHTML =
         lists:foldl(fun(Format, Aux) ->
                             HTML = nova_admin_forms:format(Format),
                             [HTML|Aux]
                     end, [], Formats),
     logger:info("Concat: ~p", [ConcatHTML]),
-    handle({ok, [{html, lists:reverse(ConcatHTML)}]}, Req);
+    handle({ok, [{html, lists:reverse(ConcatHTML)}]}, ModFun, Req, State);
 
-handle(Format, Req) ->
+handle(Format, ModFun, Req, State) ->
     HTML = nova_admin_forms:format(Format),
-    handle({ok, [{html, HTML}]}, Req);
+    handle({ok, [{html, HTML}]}, ModFun, Req, State);
 
-handle(Payload, Req) ->
+handle(Payload, ModFun, Req, State) ->
     logger:error("Unsupported payload in nova_admin_handler; ~p", [Payload]),
-    {status, 500}.
+    nova_basic_handler:handle_status({status, 500}, ModFun, Req, State).
 
 get_subpages(Routefile) ->
     case file:consult(Routefile) of

@@ -17,12 +17,8 @@
                                #{
                                  name => nova_admin,
                                  routes_file => "priv/nova_admin.routes.erl"
-                                },
-                                #{
-                                 name => nova_chat,
-                                 routes_file => "priv/nova_chat.routes.erl"
-                                 }
-                                  ]}]},
+                                }
+                                ]}]},
   {modules, []},
   {maintainers, []},
   {licenses, ["Apache 2.0"]},

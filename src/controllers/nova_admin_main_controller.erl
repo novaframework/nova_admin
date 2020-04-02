@@ -5,14 +5,15 @@
         ]).
 
 -include_lib("nova_admin/include/nova_admin.hrl").
+-include_lib("nova/include/nova.hrl").
 
 dashboard(#{method := <<"GET">>} = _Req) ->
-    {ok, AppRoutes} = nova_router:get_routes(),
+    {ok, {AppRoutes, _}} = nova_router:get_all_routes(),
     [RouteList] =
         lists:map(fun({Host, Routes}) ->
                           lists:map(fun({Route, _Handler, #{app := App, func := Func, methods := Methods,
-                                                            mod := Mod, protocol := Protocol, secure := Secure}}) ->
-                                            [underscore_to_all(Host), Route, App, Mod, Func, underscore_to_all(Methods), Protocol, Secure];
+                                                            mod := Mod, secure := Secure}}) ->
+                                            [underscore_to_all(Host), Route, App, Mod, Func, underscore_to_all(Methods), http, Secure];
                                        ({Route, _Handler, {Func, App, Dir}}) ->
                                             [underscore_to_all(Host), Route, App, Func, <<"">>, <<"all">>, http, false]
                                     end, Routes)
@@ -23,7 +24,8 @@ dashboard(#{method := <<"GET">>} = _Req) ->
                    },
     Container = #container{title = <<"Routing table">>, body = PagedTable},
 
-    {external_handler, nova_admin_handler, Container}.
+    ?DEBUG("Container: ~p", [Container]),
+    {ok, RouteList}.
 
 users(#{method := <<"GET">>}) ->
     {ok, Users} = nova_admin_db:get_users(),

@@ -20,6 +20,7 @@
 %%====================================================================
 
 start_link() ->
+    nova_handlers:register_handler(nova_admin, fun nova_admin_handler:handle/4),
     supervisor:start_link({local, ?SERVER}, ?MODULE, []).
 
 %%====================================================================
