@@ -1,0 +1,6 @@
+-sname 'nova_admin'
+
+-setcookie 'nova_admin_cookie'
+
++K true
++A30

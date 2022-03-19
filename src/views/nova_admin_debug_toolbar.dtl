@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <style>
+      #page {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      }
+
+      #toolbar {
+          position: absolute;
+          bottom: 0;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+          width: 50%;
+          height: 50px;
+          background-color: #EEE;
+          padding: 5px;
+          text-align: center;
+          border: 1px solid black;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="page" src="?d=1">
+    </iframe>
+    <div id="toolbar">
+      <h3>Nova toolbar</h3>
+    </div>
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/js/debug-toolbar.js"></script>
+  </body>
+</html>

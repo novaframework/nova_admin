@@ -1,0 +1,108 @@
+<!doctype html>
+<!--
+    * Bootstrap Simple Admin Template
+    * Version: 2.1
+    * Author: Alexis Luna
+    * Website: https://github.com/alexis-luna/bootstrap-simple-admin-template
+  -->
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nova admin {% block title %}{% endblock %}</title>
+    <link href="/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="/assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/master.css" rel="stylesheet">
+    <link href="/assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+    {% block css %}{% endblock %}
+  </head>
+
+  <body>
+    {% block html_top %}{% endblock %}
+    <div class="wrapper">
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <img src="/assets/img/logo.svg" alt="bootraper logo" class="app-logo">
+        </div>
+        <ul class="list-unstyled components text-secondary">
+          <li>
+            <a href="/"><i class="fas fa-home"></i> System</a>
+          </li>
+          <li>
+            <a href="route_table"><i class="fas fa-file-alt"></i> Route table</a>
+          </li>
+          <li>
+            <a href="/"><i class="fas fa-file-alt"></i> Load charts</a>
+          </li>
+          <li>
+            <a href="/"><i class="fas fa-table"></i> Memory Allocators</a>
+          </li>
+          <li>
+            <a href="/"><i class="fas fa-chart-bar"></i> Applications</a>
+          </li>
+          <li>
+            <a href="/processes"><i class="fas fa-icons"></i> Processes</a>
+          </li>
+          <li>
+            <a href="/ports"><i class="fas fa-icons"></i> Ports</a>
+          </li>
+          <li>
+            <a href="/tables"><i class="fas fa-icons"></i> Table Viewer</a>
+          </li>
+          <li>
+            <a href="/"><i class="fas fa-icons"></i> xProf</a>
+          </li>
+
+        </ul>
+      </nav>
+      <div id="body" class="active">
+        <!-- navbar navigation component -->
+        <nav class="navbar navbar-expand-lg navbar-white bg-white">
+          <button type="button" id="sidebarCollapse" class="btn btn-light">
+            <i class="fas fa-bars"></i><span></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <div class="nav-dropdown">
+                  <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user"></i> <span>John Doe</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end nav-link-menu">
+                    <ul class="nav-list">
+                      <li><a href="" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- end of navbar navigation -->
+        <div class="content">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 page-header">
+                <div class="page-pretitle">{% block pre_title %}{% endblock %}</div>
+                <h2 class="page-title">{% block title %}{% endblock %}</h2>
+              </div>
+            </div>
+            {% block content %}{% endblock %}
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {% block html_bottom %}{% endblock %}
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+    {% block js_scripts %}{% endblock %}
+  </body>
+
+</html>
