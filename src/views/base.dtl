@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Nova admin {% block title %}{% endblock %}</title>
-    <link href="/assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="/assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
-    <link href="/assets/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/master.css" rel="stylesheet">
-    <link href="/assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+    <link href="{% url "/assets/vendor/fontawesome/css/fontawesome.min.css" application="nova_admin" %}" rel="stylesheet">
+    <link href="{% url "/assets/vendor/fontawesome/css/solid.min.css" application="nova_admin" %}" rel="stylesheet">
+    <link href="{% url "/assets/vendor/fontawesome/css/brands.min.css" application="nova_admin" %}" rel="stylesheet">
+    <link href="{% url "/assets/vendor/bootstrap/css/bootstrap.min.css" application="nova_admin" %}" rel="stylesheet">
+    <link href="{% url "/assets/css/master.css" application="nova_admin" %}" rel="stylesheet">
+    <link href="{% url "/assets/vendor/flagiconcss/css/flag-icon.min.css" application="nova_admin" %}" rel="stylesheet">
     {% block css %}{% endblock %}
   </head>
 
@@ -26,35 +26,32 @@
     <div class="wrapper">
       <nav id="sidebar">
         <div class="sidebar-header">
-          <img src="/assets/img/logo.svg" alt="bootraper logo" class="app-logo">
+          <img src="{% url "/assets/img/logo.svg" application="nova_admin" %}" alt="bootraper logo" class="app-logo">
         </div>
         <ul class="list-unstyled components text-secondary">
           <li>
-            <a href="/"><i class="fas fa-home"></i> System</a>
+            <a href="{% url "/" application="nova_admin" %}"><i class="fas fa-home"></i> System</a>
           </li>
           <li>
-            <a href="route_table"><i class="fas fa-file-alt"></i> Route table</a>
+            <a href="{% url "/route_table" application="nova_admin" %}"><i class="fas fa-file-alt"></i> Route table</a>
           </li>
           <li>
-            <a href="/"><i class="fas fa-file-alt"></i> Load charts</a>
+            <a href="#"><i class="fas fa-file-alt"></i> Load charts</a>
           </li>
           <li>
-            <a href="/"><i class="fas fa-table"></i> Memory Allocators</a>
+            <a href="#"><i class="fas fa-table"></i> Memory Allocators</a>
           </li>
           <li>
-            <a href="/"><i class="fas fa-chart-bar"></i> Applications</a>
+            <a href="#"><i class="fas fa-chart-bar"></i> Applications</a>
           </li>
           <li>
-            <a href="/processes"><i class="fas fa-icons"></i> Processes</a>
+            <a href="{% url "/processes" application="nova_admin" %}"><i class="fas fa-icons"></i> Processes</a>
           </li>
           <li>
-            <a href="/ports"><i class="fas fa-icons"></i> Ports</a>
+            <a href="{% url "/ports" application="nova_admin" %}"><i class="fas fa-icons"></i> Ports</a>
           </li>
           <li>
-            <a href="/tables"><i class="fas fa-icons"></i> Table Viewer</a>
-          </li>
-          <li>
-            <a href="/"><i class="fas fa-icons"></i> xProf</a>
+            <a href="{% url "/tables" application="nova_admin" %}"><i class="fas fa-icons"></i> Table Viewer</a>
           </li>
 
         </ul>
@@ -99,9 +96,9 @@
       </div>
     </div>
     {% block html_bottom %}{% endblock %}
-    <script src="/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/script.js"></script>
+    <script src="{% url "/assets/vendor/jquery/jquery.min.js" application="nova_admin" %}"></script>
+    <script src="{% url "/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" application="nova_admin" %}"></script>
+    <script src="{% url "/assets/js/script.js" application="nova_admin" %}"></script>
     {% block js_scripts %}{% endblock %}
   </body>
 

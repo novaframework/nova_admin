@@ -17,12 +17,12 @@
 {% endblock %}
 
 {% block css %}
-<link href="/assets/vendor/treant/treant.css" rel="stylesheet">
+<link href="{% url "/assets/vendor/treant/treant.css" application="nova_admin" %}" rel="stylesheet">
 {% endblock %}
 
 {% block js_scripts %}
-<script src="/assets/vendor/treant/raphael.js"></script>
-<script src="/assets/vendor/treant/treant.js"></script>
+<script src="{% url "/assets/vendor/treant/raphael.js" application="nova_admin" %}"></script>
+<script src="{% url "/assets/vendor/treant/treant.js" application="nova_admin" %}"></script>
 <script type="text/javascript">
   var route_config = {
   connectors: {
