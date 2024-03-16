@@ -469,15 +469,15 @@ table.dataTable>tbody>tr.child ul.dtr-details {
     text-align: center;
 }
 .node.endpoint {
-    background-color: lightgreen;
+    background-color: #d4edda;
 }
 
 .node.wildcard {
-    background-color: yellow;
+    background-color: #fff3cd;
 }
 
 .node.binding {
-    background-color: lightblue;
+    background-color: #cce5ff;
 }
 
 .node p.node-route {

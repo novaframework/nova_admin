@@ -6,18 +6,36 @@
 {% block content %}
 <div class="row">
   <div class="col-md-12 col-lg-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="chart" id="route-table"></div>
+    <div class="legend mb-3">
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #fff;"></div>
+        <div class="legend-text">No endpoint</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #d4edda;"></div>
+        <div class="legend-text">Regular endpoint</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #fff3cd;"></div>
+        <div class="legend-text">Wildcard endpoint</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background-color: #cce5ff;"></div>
+        <div class="legend-text">Binding endpoint</div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="chart" id="route-table"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 {% endblock %}
 
 {% block css %}
-<link href="{% url "/assets/vendor/treant/treant.css" application="nova_admin" %}" rel="stylesheet">
+  <link href="{% url "/assets/vendor/treant/treant.css" application="nova_admin" %}" rel="stylesheet">
+  <link href="{% url "/assets/routing.css" application="nova_admin" %}" rel="stylesheet">
 {% endblock %}
 
 {% block js_scripts %}

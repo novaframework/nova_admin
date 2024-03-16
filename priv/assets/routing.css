@@ -1,0 +1,14 @@
+.legend-color {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.legend-text {
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+}
