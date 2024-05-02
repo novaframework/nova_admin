@@ -12,3 +12,104 @@
     font-size: 14px;
     color: #333;
 }
+
+.striped-node {
+    background: repeating-linear-gradient(
+        45deg,
+        #d4edda,
+        #d4edda 5px,
+        #BED5C4 5px,
+        #BED5C4 10px
+    );
+    animation-name: striped-active;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes striped-active {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 10px 0px;
+    }
+}
+
+.tracebar {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #f8f9fa;
+    padding: 10px;
+    border-top: 1px solid #333;
+}
+
+.tracebar.folded {
+    display: block;
+    height: 100px;
+}
+
+.tracebar.unfolded {
+    display: block;
+    height: 95%;
+}
+
+.trace-entries {
+    width: 100%;
+    height: 100%;
+}
+
+.top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+#route_info {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 500px;
+    background-color: #FFF;
+    border-left: 1px solid #333;
+    padding: 10px;
+}
+
+.node.endpoint.selected-node {
+    border: 2px solid #dc5544;
+}
+
+.method {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.method.GET {
+    background-color: #28a745;
+    color: #FFF;
+}
+
+.method.POST {
+    background-color: #007bff;
+    color: #FFF;
+}
+
+.method.DELETE {
+    background-color: #dc3545;
+    color: #FFF;
+}
+
+.method.PUT {
+    background-color: #ffc107;
+    color: #FFF;
+}
+
+.method.ALL {
+    background-color: #17a2b8;
+    color: #FFF;
+}

@@ -16,6 +16,10 @@
         <div class="legend-text">Regular endpoint</div>
       </div>
       <div class="legend-item">
+        <div class="legend-color striped-node"></div>
+        <div class="legend-text">Traced endpoint</div>
+      </div>
+      <div class="legend-item">
         <div class="legend-color" style="background-color: #fff3cd;"></div>
         <div class="legend-text">Wildcard endpoint</div>
       </div>
@@ -30,18 +34,67 @@
       </div>
     </div>
   </div>
+  {% endblock %}
 
+  {% block html_bottom %}
+  <div class="tracebar" id="tracebar">
+    <div class="top-right">
+      <i id="toggle-trace" class="fas fa-ellipsis-v"></i>
+    </div>
+    <b>Traces</b>
+    <div class="trace-list">
+      <pre id="trace-entries">
+      </pre>
+    </div>
+  </div>
+
+  <div id="source_modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Source code</h5>
+          <button type="button" class="close" data-dismiss="#source_modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <pre><code class="language-erlang" id="code_block"></code></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="#source_modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
   <link href="{% url "/assets/vendor/treant/treant.css" application="nova_admin" %}" rel="stylesheet">
   <link href="{% url "/assets/routing.css" application="nova_admin" %}" rel="stylesheet">
 {% endblock %}
 
-{% block js_scripts %}
+  {% block js_scripts %}
+  <div class="route_info" id="route_info">
+    <div class="top-right">
+      <i id="toggle-info" class="fas fa-times"></i>
+    </div>
+    <h2>Route info</h2>
+    <div class="route-info-list">
+      <b>Method:</b> <span id="route_info_method">GET</span><br />
+      <b>Path:</b> <span id="route_info_path">/api/v1/health</span><br />
+      <b>Handler:</b> <span id="route_info_handler">nova_admin_healthcheck_controller:do_healthcheck/1</span><br />
+      <br />
+    </div>
+    <button class="btn btn-primary" id="start_trace">Start Trace</button>
+  </div>
 <script src="{% url "/assets/vendor/treant/raphael.js" application="nova_admin" %}"></script>
 <script src="{% url "/assets/vendor/treant/treant.js" application="nova_admin" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/erlang.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
 <script type="text/javascript">
+  var base_url = "{% url "" application="nova_admin" %}";
   var route_config = {
   connectors: {
   type: 'step'
@@ -54,5 +107,8 @@
   nodeStructure: {{ routes|safe }}
   };
   new Treant( route_config );
+  hljs.initLineNumbersOnLoad();
+
 </script>
+<script src="{% url "/assets/js/routing.js" application="nova_admin" %}"></script>
 {% endblock %}
