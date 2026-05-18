@@ -2,12 +2,12 @@
 -behaviour(nova_plugin).
 
 -export([
-         pre_request/2,
-         post_request/2,
+         pre_request/4,
+         post_request/4,
          plugin_info/0
         ]).
 
-pre_request(Req = #{path := Path}, _Options) ->
+pre_request(Req = #{path := Path}, _Env, _Options, State) ->
     case nova_admin_trace_db:get_mark('_', Path) of
         true ->
             Self = self(),
@@ -15,10 +15,10 @@ pre_request(Req = #{path := Path}, _Options) ->
         _false ->
             ok
     end,
-    {ok, Req}.
+    {ok, Req, State}.
 
-post_request(Req, _Options) ->
-    {ok, Req}.
+post_request(Req, _Env, _Options, State) ->
+    {ok, Req, State}.
 
 
 %%--------------------------------------------------------------------
